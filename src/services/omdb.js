@@ -21,10 +21,18 @@ export const fetchMovie = nomPeli =>
     })
 }
 
-export const showFirst100 = () =>
+export const fetchMovieDetail = idPeli =>
+{   
+    return omdb.get(`${idPeli}`)
+    .then((response)=> {
+        return response.data
+    })
+}
+
+export const showFirst25 = () =>
 {
     let listaPelis = [];
-    for(let idPeli = 0; idPeli< 50; idPeli++)
+    for(let idPeli = 0; idPeli< 25; idPeli++)
     {
         return omdb.get(`${idPeli}`)
         .then((response)=> {
