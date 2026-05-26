@@ -20,4 +20,4 @@ const MovieDetail = ({tituloCompleto, poster, anio, genero, director, actoresMai
     )
 }
 
-export default MovieCard
+export default MovieDetail

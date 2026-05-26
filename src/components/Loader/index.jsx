@@ -1,14 +1,7 @@
-
-
-const Loader = () =>
-{
-    const [loader, setLoader] = useState("Cargando...")
-
-    return (
-        <div className="loader">
-            <p>{loader}</p>
-        </div>
-    )
-}
+const Loader = ({ message = "Cargando..." }) => (
+  <div className="loader">
+    <p>{message}</p>
+  </div>
+)
 
 export default Loader

@@ -9,13 +9,13 @@ const omdb = axios.create({
 
 export const fetchMovie = async nomPeli => {
     const response = await omdb.get("/", { params: { s: nomPeli, page: 1 } })
-    // Debug: show API response shape when searching
     try { console.debug("fetchMovie response:", response.data) } catch (e) {}
     return response.data
 }
 
-export const fetchMovieDetail = async idPeli => {
-    const response = await omdb.get("/", { params: { t: idPeli } })
+/** Búsqueda por título exacto (OMDB param `t`). */
+export const fetchMovieDetail = async nombrePeli => {
+    const response = await omdb.get("/", { params: { t: nombrePeli } })
     return response.data
 }
 
