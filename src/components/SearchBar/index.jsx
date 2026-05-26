@@ -1,11 +1,7 @@
-import { useState } from "react"
-
-const SearchBar = ({setWord}) =>
-{
-    
+const SearchBar = ({ setWord }) => {
     return (
-        <form id="search">
-        <input type="text" placeholder="Busca tu pelicula favorita" onKeyUp={setWord(target.value)}/>
+        <form id="search" onSubmit={e => e.preventDefault()}>
+            <input type="text" placeholder="Busca tu pelicula favorita" onChange={e => setWord(e.target.value)} />
         </form>
     )
 }

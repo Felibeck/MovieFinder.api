@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchMovie } from './services/omdb'
+import SearchBar from './components/SearchBar'
+import MovieList from './components/MovieList'
 
 function App() {
 

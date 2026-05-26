@@ -1,25 +1,35 @@
-import { useEffect } from "react";
-import { showFirst25 } from "../services/omdb"
+import { useEffect, useState } from "react";
+import { fetchMovie, showFirst25 } from "../../services/omdb"
 import MovieCard from "../MovieCard";
-import { fetchMovie } from "../../services/omdb";
-
 
 const MovieList = ({ titulo }) => {
+    const [listaPelis, setListaPelis] = useState([])
 
-    let listaPelis = [];
-
-    if (titulo == "") {
-        listaPelis = showFirst25();
-    }
-    else {
-        listaPelis = fetchMovie(titulo);
-    }
+    useEffect(() => {
+        let mounted = true
+        const load = async () => {
+            try {
+                if (!titulo) {
+                    const res = await showFirst25()
+                    if (mounted) setListaPelis(res || [])
+                } else {
+                    const res = await fetchMovie(titulo)
+                    const items = res && res.Search ? res.Search : []
+                    if (mounted) setListaPelis(items)
+                }
+            } catch (e) {
+                if (mounted) setListaPelis([])
+            }
+        }
+        load()
+        return () => { mounted = false }
+    }, [titulo])
 
     return (
         <>
-            {
-                listaPelis.map(e => <MovieCard poster={e.poster} titulo={e.titulo} anio={e.anio} tipo={e.tipo} />)
-            }
+            {listaPelis.map(e => (
+                <MovieCard key={e.imdbID} poster={e.Poster} titulo={e.Title} anio={e.Year} tipo={e.Type} />
+            ))}
         </>
     )
 }
