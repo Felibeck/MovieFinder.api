@@ -1,4 +1,4 @@
-const errorMessage = ()  =>
+const ErrorMessage = ()  =>
 {
     return (
         <div className="error-message">
@@ -7,4 +7,4 @@ const errorMessage = ()  =>
     )
 }
 
-export default errorMessage
+export default ErrorMessage
