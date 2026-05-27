@@ -50,16 +50,21 @@ const MovieList = ({ titulo, onSelectMovie }) => {
         <>
             {loading && <Loader />}
             {!loading && error && <ErrorMessage />}
-            {!loading && !error && listaPelis.map(e => (
-                <MovieCard
-                  key={e.imdbID}
-                  poster={e.Poster}
-                  titulo={e.Title}
-                  anio={e.Year}
-                  tipo={e.Type}
-                  onSelectMovie={onSelectMovie}
-                />
-            ))}
+            <div className="movie-grid">
+                {!loading && !error && listaPelis.map(e => (
+                    <MovieCard
+                        key={e.imdbID}
+                        poster={e.Poster}
+                        titulo={e.Title}
+                        anio={e.Year}
+                        tipo={e.Type}
+                        onSelectMovie={onSelectMovie}
+                    />
+                ))}
+            </div>
+            {!loading && !error && listaPelis.length === 0 && titulo && (
+                <p className="no-results">No se encontraron resultados para "{titulo}"</p>
+            )}
         </>
     )
 }

@@ -1,16 +1,18 @@
 const MovieCard = ({ poster, titulo, anio, tipo, onSelectMovie }) => {
     return (
-       <div>
-           <h1>{titulo}</h1>
-           <img
-             src={poster}
-             alt="Poster"
-             style={{ cursor: onSelectMovie ? "pointer" : undefined }}
-             onClick={() => onSelectMovie?.(titulo)}
-           />
-           <h3>{anio}</h3>
-           <h3>{tipo}</h3>
-       </div>
+        <div className="movie-card" onClick={() => onSelectMovie?.(titulo)}>
+            {poster && poster !== 'N/A'
+                ? <img src={poster} alt={titulo} />
+                : <div className="movie-card-no-poster">🎬</div>
+            }
+            <div className="movie-card-info">
+                <p className="movie-card-title">{titulo}</p>
+                <div className="movie-card-meta">
+                    <span>{anio}</span>
+                    {tipo && <span className="movie-card-type">{tipo}</span>}
+                </div>
+            </div>
+        </div>
     )
 }
 

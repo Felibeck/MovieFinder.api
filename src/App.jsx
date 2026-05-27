@@ -70,6 +70,11 @@ function App() {
 
   return (
     <>
+      <div className="app-header">
+        <h1 className="app-title">Movie<span>Finder</span></h1>
+        <span className="app-subtitle">Base de datos cinematográfica</span>
+      </div>
+
       <SearchBar setWord={setWord} />
       <MovieList titulo={debouncedWord} onSelectMovie={setTituloSeleccionado} />
 

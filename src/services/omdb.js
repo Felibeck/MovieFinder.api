@@ -19,6 +19,8 @@ export const fetchMovieDetail = async nombrePeli => {
     return response.data
 }
 
+
+// funcion hecha con ia
 export const showFirst25 = () =>
 {
     // Fetch up to 25 search results (OMDB returns up to 10 results per page).
@@ -34,4 +36,3 @@ export const showFirst25 = () =>
     }
     return trySeed()
 }
-
